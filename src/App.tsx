@@ -1,7 +1,12 @@
 import './App.css'
+import { Layout, DateInput } from './components'
 
 function App() {
-  return <p>Hello World</p>
+  return (
+    <Layout>
+      <DateInput />
+    </Layout>
+  )
 }
 
 export default App
