@@ -1,10 +1,12 @@
 import './App.css'
-import { Layout, DateInput } from './components'
+import { Layout, DateInput, CalculateAgeButton, AgeDisplay } from './components'
 
 function App() {
   return (
     <Layout>
       <DateInput />
+      <CalculateAgeButton />
+      <AgeDisplay />
     </Layout>
   )
 }
