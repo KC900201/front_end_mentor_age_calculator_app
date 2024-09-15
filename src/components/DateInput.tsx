@@ -26,7 +26,24 @@ const DefaultInput = ({ label, placeHolder }: InputInterface) => {
       <input
         type="text"
         placeholder={placeHolder}
-        className="w-full font-bold bg-transparent rounded-md border border-stroke border-gray-400 py-[10px] px-5 text-dark-6 text-3xl outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"
+        style={{
+          fontSize: '32px',
+        }}
+        className="w-full
+        font-bold
+        bg-transparent
+        rounded-md border
+        border-stroke
+        py-[10px] px-5
+        text-dark-6
+        leading-9
+        outline-none
+        transition
+        focus:border-primary
+        active:border-primary
+        disabled:cursor-default
+        disabled:bg-gray-2
+        disabled:border-gray-2"
       />
     </>
   )
