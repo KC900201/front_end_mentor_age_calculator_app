@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useMemo } from 'react'
+import { useValidateInput } from '../hooks'
 
 type Props = {
   children?: React.ReactNode
@@ -18,14 +19,30 @@ const InputColumn = ({ children }: Props) => {
 }
 
 const DefaultInput = ({ label, placeHolder }: InputInterface) => {
-  const [inputValue, setInputValue] = useState('')
+  const { date, setDate } = useValidateInput()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Allow only numeric values in user input
     // https://www.geeksforgeeks.org/how-to-get-only-numeric-values-in-textinput-field-in-react-native/
     const numericValue = event.target.value.replace(/[^0-9]/g, '')
-    setInputValue(numericValue)
+
+    setDate((date) => ({
+      ...date,
+      [label.toLowerCase()]: numericValue,
+    }))
   }
+
+  const dateValue = useMemo(() => {
+    const trimmedLabel = label.trim().toLowerCase()
+
+    if (trimmedLabel === 'day') {
+      return date.day
+    } else if (trimmedLabel === 'month') {
+      return date.month
+    } else {
+      return date.year
+    }
+  }, [label, date])
 
   return (
     <>
@@ -36,7 +53,7 @@ const DefaultInput = ({ label, placeHolder }: InputInterface) => {
         type="text"
         pattern="[0-9]*"
         onChange={handleInputChange}
-        value={inputValue}
+        value={dateValue}
         placeholder={placeHolder}
         style={{
           fontSize: '32px',
