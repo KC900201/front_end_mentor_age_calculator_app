@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 type Props = {
   children?: React.ReactNode
@@ -18,6 +18,15 @@ const InputColumn = ({ children }: Props) => {
 }
 
 const DefaultInput = ({ label, placeHolder }: InputInterface) => {
+  const [inputValue, setInputValue] = useState('')
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Allow only numeric values in user input
+    // https://www.geeksforgeeks.org/how-to-get-only-numeric-values-in-textinput-field-in-react-native/
+    const numericValue = event.target.value.replace(/[^0-9]/g, '')
+    setInputValue(numericValue)
+  }
+
   return (
     <>
       <label className="mb-[10px] block text-base font-bold text-gray-500 text-left">
@@ -25,6 +34,9 @@ const DefaultInput = ({ label, placeHolder }: InputInterface) => {
       </label>
       <input
         type="text"
+        pattern="[0-9]*"
+        onChange={handleInputChange}
+        value={inputValue}
         placeholder={placeHolder}
         style={{
           fontSize: '32px',
