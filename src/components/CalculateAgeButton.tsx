@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
-import IconArrowLogo from '../assets/images//icon-arrow.svg'
-import { useCalculateBirthday } from '../hooks'
+import IconArrowLogo from "../assets/images//icon-arrow.svg"
+import { useCalculateBirthday } from "../hooks"
 
 const CalculateAgeSection = styled.section`
   display: flex;
@@ -25,16 +25,17 @@ const UnderLine = styled.div`
 // Further adjustments needed (1/24/2024s)
 function CalculateAgeButton() {
   // TO-DO: correctly set birthday calculation
+  // const { setDateValid } = useValidateInput()
   const { setBirthday } = useCalculateBirthday()
 
   // WIP
   const onSubmitAge = () => {
-    setBirthday('hahaha')
-    alert('testing button')
+    setBirthday("")
+    // setDateValid(true)
   }
 
   return (
-    <CalculateAgeSection>
+    <CalculateAgeSection className="caret-transparent">
       <UnderLine />
       <CustomButton onClick={onSubmitAge}>
         <img src={IconArrowLogo} alt="icon-arrow" />
