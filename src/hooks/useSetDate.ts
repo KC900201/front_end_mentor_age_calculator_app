@@ -15,11 +15,11 @@ function useSetDate() {
   }
 
   const [date, setDate] = useState<DateInputType>(defaultDate)
-  const [day, setDay] = useState<string>("")
-  const [month, setMonth] = useState<string>("")
-  const [year, setYear] = useState<string>("")
+  const [ageDay, setAgeDay] = useState<string>("")
+  const [ageMonth, setAgeMonth] = useState<string>("")
+  const [ageYear, setAgeYear] = useState<string>("")
 
-  return {date, setDate, day, setDay, month, setMonth, year, setYear}
+  return {date, setDate, ageDay, setAgeDay, ageMonth, setAgeMonth, ageYear, setAgeYear}
 }
 
 export default useSetDate

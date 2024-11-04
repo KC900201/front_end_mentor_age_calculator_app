@@ -1,4 +1,5 @@
-import React from "react"
+"use client"
+import React, { useMemo } from "react"
 import { useSetDate } from "../hooks"
 
 type Props = {
@@ -24,6 +25,17 @@ const DefaultInput = ({
   placeHolder,
   onHandleInput,
 }: InputInterface) => {
+  const setMaxInput = useMemo(() => {
+    switch (label) {
+      case "DAY":
+        return 31
+      case "MONTH":
+        return 12
+      default:
+        return 9999
+    }
+  }, [label])
+
   return (
     <>
       <label className="mb-[10px] block text-base font-bold text-gray-500 text-left">
@@ -31,10 +43,10 @@ const DefaultInput = ({
       </label>
       <input
         type="number"
-        pattern="[0-9\s]*"
-        inputMode="numeric"
         onChange={onHandleInput}
         placeholder={placeHolder}
+        max={setMaxInput}
+        min={1}
         style={{
           fontSize: "32px",
         }}
@@ -59,7 +71,7 @@ const DefaultInput = ({
 }
 
 function DateInput() {
-  const { setDate } = useSetDate()
+  const { date, setDate } = useSetDate()
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -69,39 +81,41 @@ function DateInput() {
     // https://www.geeksforgeeks.org/how-to-get-only-numeric-values-in-textinput-field-in-react-native/
     const dateString = event.target.value.replace(/[^0-9]/g, "")
 
+    // To-do: validate input value based on date unit comparison
+
     setDate((prevState) => ({
       ...prevState,
       [field]: dateString,
     }))
+
+    console.log("date: ", date)
   }
 
   return (
     <div className="container">
-      <form>
-        <div className="mx-1 mt-10 flex flex-wrap">
-          <InputColumn>
-            <DefaultInput
-              label="DAY"
-              placeHolder="DD"
-              onHandleInput={(e) => handleInputChange(e, "day")}
-            />
-          </InputColumn>
-          <InputColumn>
-            <DefaultInput
-              label="MONTH"
-              placeHolder="MM"
-              onHandleInput={(e) => handleInputChange(e, "month")}
-            />
-          </InputColumn>
-          <InputColumn>
-            <DefaultInput
-              label="YEAR"
-              placeHolder="YYYY"
-              onHandleInput={(e) => handleInputChange(e, "year")}
-            />
-          </InputColumn>
-        </div>
-      </form>
+      <div className="mx-1 mt-10 flex flex-wrap">
+        <InputColumn>
+          <DefaultInput
+            label="DAY"
+            placeHolder="DD"
+            onHandleInput={(e) => handleInputChange(e, "day")}
+          />
+        </InputColumn>
+        <InputColumn>
+          <DefaultInput
+            label="MONTH"
+            placeHolder="MM"
+            onHandleInput={(e) => handleInputChange(e, "month")}
+          />
+        </InputColumn>
+        <InputColumn>
+          <DefaultInput
+            label="YEAR"
+            placeHolder="YYYY"
+            onHandleInput={(e) => handleInputChange(e, "year")}
+          />
+        </InputColumn>
+      </div>
     </div>
   )
 }
