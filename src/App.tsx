@@ -1,6 +1,7 @@
-import './App.css'
-import { Layout, DateInput, CalculateAgeButton, AgeDisplay } from './components'
+import "./App.css"
+import { Layout, DateInput, CalculateAgeButton, AgeDisplay } from "./components"
 
+// To-do: migrate hooks and validation logic to this component
 function App() {
   return (
     <Layout>
