@@ -7,6 +7,10 @@ import { Layout, DateInput, CalculateAgeButton, AgeDisplay } from "./components"
     3. Add in error message for each validation failure in UI layout
     4. Deploy to netlify once 1~3 are completed
     5. (Optional) add in mobile design layout
+   
+   References:
+    1. https://github.com/BrandTrump/Age-Calculator
+    2. https://github.com/OthmaneNissoukin/fem-react-age-calculator
 */
 
 function App() {
