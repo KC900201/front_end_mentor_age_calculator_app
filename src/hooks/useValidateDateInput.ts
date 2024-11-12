@@ -1,6 +1,6 @@
 import { getYear } from "date-fns"
 import { useState } from "react"
-import { ERROR_MESSAGES } from "../constants/error-message.contant"
+import { ERROR_MESSAGES } from "../constants/error-message.constant"
 
 function useValidateInput() {
   const [isDateValid, setDateValid] = useState<boolean>(false)
