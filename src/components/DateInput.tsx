@@ -1,6 +1,6 @@
 "use client"
 import React, { useMemo } from "react"
-import { useSetDate } from "../hooks"
+import { DateType } from "../types/date.type"
 
 type Props = {
   children?: React.ReactNode
@@ -10,6 +10,12 @@ interface InputInterface {
   label: string
   placeHolder: string
   onHandleInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+interface DateInputInterface {
+  date: DateType
+  setDate: React.Dispatch<React.SetStateAction<DateType>>
+  error: string
 }
 
 const InputColumn = ({ children }: Props) => {
@@ -31,6 +37,8 @@ const DefaultInput = ({
         return 31
       case "MONTH":
         return 12
+      case "YEAR":
+        return 1970
       default:
         return 9999
     }
@@ -70,9 +78,7 @@ const DefaultInput = ({
   )
 }
 
-function DateInput() {
-  const { date, setDate } = useSetDate()
-
+function DateInput({ date, setDate, error }: DateInputInterface) {
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     field: string
@@ -81,13 +87,12 @@ function DateInput() {
     // https://www.geeksforgeeks.org/how-to-get-only-numeric-values-in-textinput-field-in-react-native/
     const dateString = event.target.value.replace(/[^0-9]/g, "")
 
-    // To-do: validate input value based on date unit comparison
-
     setDate((prevState) => ({
       ...prevState,
       [field]: dateString,
     }))
 
+    console.log("error: ", error)
     console.log("date: ", date)
   }
 

@@ -1,6 +1,6 @@
 "use client"
 import styled from "styled-components"
-import { useSetDate } from "../hooks"
+import { AgeType } from "../types/date.type"
 
 const AgeDisplaySection = styled.section``
 
@@ -14,6 +14,10 @@ interface AgeTextDisplayInterface {
   unit: "years" | "months" | "days"
 }
 
+interface AgeDisplayInterface {
+  age: AgeType
+}
+
 const AgeTextDisplay = ({ value, unit }: AgeTextDisplayInterface) => (
   <div className="flex gap-x-1 gap-y-0">
     <AgeText className="italic font-extrabold" color="#854dff">
@@ -23,14 +27,18 @@ const AgeTextDisplay = ({ value, unit }: AgeTextDisplayInterface) => (
   </div>
 )
 
-function AgeDisplay() {
-  const { ageDay, ageMonth, ageYear } = useSetDate()
+function AgeDisplay({ age }: AgeDisplayInterface) {
+  const { years, months, days } = age
+
+  const ageToString = (age: number) => {
+    return age > 0 ? age.toString() : ""
+  }
 
   return (
     <AgeDisplaySection className="grid gap-x-0 gap-y-0 justify-start pl-5 pb-2 caret-transparent cursor-default">
-      <AgeTextDisplay value={ageDay} unit="years" />
-      <AgeTextDisplay value={ageMonth} unit="months" />
-      <AgeTextDisplay value={ageYear} unit="days" />
+      <AgeTextDisplay value={ageToString(years)} unit="years" />
+      <AgeTextDisplay value={ageToString(months)} unit="months" />
+      <AgeTextDisplay value={ageToString(days)} unit="days" />
     </AgeDisplaySection>
   )
 }
