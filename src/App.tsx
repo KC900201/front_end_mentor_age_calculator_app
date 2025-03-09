@@ -33,12 +33,18 @@ function App() {
 
   const handleCalculateAge = () => {
     if (validateDate(date)) {
+      console.log("date: ", date)
       const { year, month, day } = date
       const today = new Date()
+      const birthDate = new Date(
+        parseInt(year),
+        parseInt(month) - 1,
+        parseInt(day)
+      )
 
-      let ageYears = today.getFullYear() - parseInt(year)
-      let ageMonths = today.getMonth() - parseInt(month)
-      let ageDays = today.getDate() - parseInt(day)
+      let ageYears = today.getFullYear() - birthDate.getFullYear()
+      let ageMonths = today.getMonth() - birthDate.getMonth()
+      let ageDays = today.getDate() - birthDate.getDate()
 
       // Adjust the age if current month is earlier than the birth month
       if (ageMonths < 0 || (ageMonths === 0 && ageDays < 0)) {
@@ -56,24 +62,22 @@ function App() {
         ageMonths--
       }
 
-      const birthDate = new Date(ageYears, ageMonths, ageDays)
-      const ageInMilliseconds = today.getTime() - birthDate.getTime()
-      const ageDate = new Date(ageInMilliseconds)
-
       setAge({
-        years: Math.abs(ageDate.getUTCFullYear() - 1970),
-        months: ageDate.getUTCMonth(),
-        days: ageDate.getUTCDate() - 1,
+        years: ageYears,
+        months: ageMonths,
+        days: ageDays,
       })
     }
   }
 
   return (
-    <Layout>
-      <DateInput date={date} setDate={setDate} error={error} />
-      <CalculateAgeButton handleCalculateAge={handleCalculateAge} />
-      <AgeDisplay age={age} />
-    </Layout>
+    <main>
+      <Layout>
+        <DateInput setDate={setDate} />
+        <CalculateAgeButton handleCalculateAge={handleCalculateAge} />
+        <AgeDisplay age={age} />
+      </Layout>
+    </main>
   )
 }
 

@@ -13,9 +13,7 @@ interface InputInterface {
 }
 
 interface DateInputInterface {
-  date: DateType
   setDate: React.Dispatch<React.SetStateAction<DateType>>
-  error: string
 }
 
 const InputColumn = ({ children }: Props) => {
@@ -63,7 +61,7 @@ const DefaultInput = ({
         bg-transparent
         rounded-md border
         border-stroke
-        py-[10px] px-5
+        py-[10px] px-4
         text-dark-6
         leading-9
         outline-none
@@ -78,7 +76,7 @@ const DefaultInput = ({
   )
 }
 
-function DateInput({ date, setDate, error }: DateInputInterface) {
+function DateInput({ setDate }: DateInputInterface) {
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     field: string
@@ -91,9 +89,6 @@ function DateInput({ date, setDate, error }: DateInputInterface) {
       ...prevState,
       [field]: dateString,
     }))
-
-    console.log("error: ", error)
-    console.log("date: ", date)
   }
 
   return (
