@@ -1,7 +1,7 @@
 "use client"
 import styled from "styled-components"
 
-import IconArrowLogo from "../assets/images//icon-arrow.svg"
+import IconArrowLogo from "../assets/images/icon-arrow.svg"
 import React from "react"
 
 const CalculateAgeSection = styled.section`

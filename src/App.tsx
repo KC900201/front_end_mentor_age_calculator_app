@@ -5,11 +5,12 @@ import { ERROR_MESSAGES } from "./constants/error-message.constant"
 import { AgeType, DateType } from "./types/date.type"
 
 /* To-do:
-    1. migrate hooks and validation logic to this component
-    2. Add in props for each child component interface (new)
-    3. Add in error message for each validation failure in UI layout
-    4. Deploy to netlify once 1~3 are completed
-    5. (Optional) add in mobile design layout
+    [x] migrate hooks and validation logic to this component
+    [x] Add in props for each child component interface (new)
+    [ ] Add in error message for each validation failure in UI layout
+    [ ] Improve the UI layout of date input and submit button
+    [ ] Deploy to netlify once 1~3 are completed
+    [ ] (Optional) add in mobile design layout
 
    References:
     1. https://github.com/BrandTrump/Age-Calculator
