@@ -1,16 +1,17 @@
 import "./App.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Layout, DateInput, CalculateAgeButton, AgeDisplay } from "./components"
 import { ERROR_MESSAGES } from "./constants/error-message.constant"
 import { AgeType, DateType } from "./types/date.type"
 
 /* To-do:
-    [x] migrate hooks and validation logic to this component
-    [x] Add in props for each child component interface (new)
-    [ ] Add in error message for each validation failure in UI layout
-    [ ] Improve the UI layout of date input and submit button
-    [ ] Deploy to netlify once 1~3 are completed
-    [ ] (Optional) add in mobile design layout
+    [x] 1. migrate hooks and validation logic to this component
+    [x] 2. Add in props for each child component interface (new)
+    [ ] 3. Add in error message for each validation failure in UI layout **
+    [ ] 4. Improve the UI layout of date input and submit button **
+    [x] 5. Deploy to netlify once 1~4 are completed
+    [ ] 6. (Optional) add in mobile design layout
+    [ ] 7. (Optional) Amend website based on feedback
 
    References:
     1. https://github.com/BrandTrump/Age-Calculator
@@ -70,6 +71,11 @@ function App() {
       })
     }
   }
+
+  // Temporary fix to utilize error (3/17/2025)
+  useEffect(() => {
+    console.log("Error: ", error)
+  }, [error])
 
   return (
     <main>
