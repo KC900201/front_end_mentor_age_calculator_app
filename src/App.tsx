@@ -79,6 +79,8 @@ function App() {
 
   return (
     <main>
+      {/* Hide title from screen readers to match design */}
+      <h1 className="sr-only">Age Calculator</h1>
       <Layout>
         <DateInput setDate={setDate} />
         <CalculateAgeButton handleCalculateAge={handleCalculateAge} />
