@@ -24,6 +24,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: hsl(0, 0%, 100%);
 }
 
 /* Hide increment arrows in number-type inputs */
