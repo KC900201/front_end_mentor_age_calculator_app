@@ -10,12 +10,11 @@ const LayoutBoard = styled.section`
   border-radius: 5% 5% 35% 5%;
   background-color: hsl(0, 0%, 100%);
   min-height: fit-content;
-  height: 400px;
   padding: 0;
   box-shadow: 10px 5px 5px hsl(211, 68%, 94%);
   align-content: center;
   display: grid;
-  width: 500px;
+  max-width: 500px;
 `
 
 function Layout({ children }: Props) {
