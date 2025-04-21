@@ -11,7 +11,7 @@ import { AgeType, DateType } from "./types/date.type"
     [ ] 4. Improve the UI layout of date input and submit button **
     [x] 5. Deploy to netlify once 1~4 are completed
     [ ] 6. (Optional) add in mobile design layout
-    [ ] 7. (Optional) Amend website based on feedback
+    [x] 7. (Optional) Amend website based on feedback
 
    References:
     1. https://github.com/BrandTrump/Age-Calculator
